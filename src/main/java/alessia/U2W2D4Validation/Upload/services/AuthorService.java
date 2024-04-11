@@ -31,9 +31,8 @@ public class AuthorService {
     }
 
     public Author saveAuthor(PayloadAuthor body) {
-       Author newAuthor = new Author(body.name(), body.surname(), body.eMail(), body.birthdayYear(), "https://ui-avatars.com/api/?name="+ body.name() + "+" + body.surname()) {
-       };
-       return authorsDAO.save(newAuthor);
+        Author newAuthor = new Author(body.name(), body.surname(), body.eMail(), body.birthdayYear(), "https://ui-avatars.com/api/?name="+ body.name() + "+" + body.surname());
+        return authorsDAO.save(newAuthor);
     }
 
 

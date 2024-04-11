@@ -30,5 +30,13 @@ public class Author {
     @OneToMany(mappedBy = "author", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<BlogPost> blogPostList = new ArrayList<>();
+
+    public Author(String name, String surname, String eMail, int birthdayYear, String url) {
+        this.name = name;
+        this.surname = surname;
+        this.EMail = eMail;
+        this.birthdayYear = birthdayYear;
+        this.avatar = url;
+    }
 }
 

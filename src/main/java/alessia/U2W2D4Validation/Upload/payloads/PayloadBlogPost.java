@@ -17,4 +17,5 @@ public class PayloadBlogPost {
     private String content;
     private int readingTime;
     private int authorId;
+
 }

@@ -1,11 +1,12 @@
 package alessia.U2W2D4Validation.Upload.services;
 
-import alessia.U2W3D1.Spring.Web.and.Data.entities.Author;
-import alessia.U2W3D1.Spring.Web.and.Data.entities.BlogPost;
-import alessia.U2W3D1.Spring.Web.and.Data.exceptions.NotFoundException;
-import alessia.U2W3D1.Spring.Web.and.Data.payloads.PayloadBlogPost;
-import alessia.U2W3D1.Spring.Web.and.Data.repositories.AuthorsDAO;
-import alessia.U2W3D1.Spring.Web.and.Data.repositories.BlogPostDAO;
+
+import alessia.U2W2D4Validation.Upload.entities.Author;
+import alessia.U2W2D4Validation.Upload.entities.BlogPost;
+import alessia.U2W2D4Validation.Upload.exceptions.NotFoundException;
+import alessia.U2W2D4Validation.Upload.payloads.PayloadBlogPost;
+import alessia.U2W2D4Validation.Upload.repositories.AuthorsDAO;
+import alessia.U2W2D4Validation.Upload.repositories.BlogPostDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

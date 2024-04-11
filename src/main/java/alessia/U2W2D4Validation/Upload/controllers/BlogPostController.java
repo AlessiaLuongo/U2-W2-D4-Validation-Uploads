@@ -1,8 +1,9 @@
 package alessia.U2W2D4Validation.Upload.controllers;
 
-import alessia.U2W3D1.Spring.Web.and.Data.entities.BlogPost;
-import alessia.U2W3D1.Spring.Web.and.Data.payloads.PayloadBlogPost;
-import alessia.U2W3D1.Spring.Web.and.Data.services.BlogPostService;
+
+import alessia.U2W2D4Validation.Upload.entities.BlogPost;
+import alessia.U2W2D4Validation.Upload.payloads.PayloadBlogPost;
+import alessia.U2W2D4Validation.Upload.services.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

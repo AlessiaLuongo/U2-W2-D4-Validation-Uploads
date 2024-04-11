@@ -1,12 +1,20 @@
 package alessia.U2W2D4Validation.Upload.services;
 
-import alessia.U2W3D1.Spring.Web.and.Data.entities.Author;
-import alessia.U2W3D1.Spring.Web.and.Data.exceptions.NotFoundException;
-import alessia.U2W3D1.Spring.Web.and.Data.repositories.AuthorsDAO;
+import alessia.U2W2D4Validation.Upload.entities.Author;
+import alessia.U2W2D4Validation.Upload.exceptions.NotFoundException;
+import alessia.U2W2D4Validation.Upload.payloads.NewAuthorResponse;
+import alessia.U2W2D4Validation.Upload.payloads.PayloadAuthor;
+import alessia.U2W2D4Validation.Upload.repositories.AuthorsDAO;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -14,18 +22,20 @@ import java.util.Optional;
 public class AuthorService {
     @Autowired
     AuthorsDAO authorsDAO;
+    @Autowired
+    Cloudinary cloudinaryUploader;
 
 
     public List<Author> getAuthorList() {
         return this.authorsDAO.findAll();
     }
 
-    public Author saveAuthor(Author newAuthor) {
-
-        newAuthor.setAvatar("https://ui-avatars.com/api/?name=" + newAuthor.getName() + "+" + newAuthor.getSurname());
-
-        return authorsDAO.save(newAuthor);
+    public Author saveAuthor(PayloadAuthor body) {
+       Author newAuthor = new Author(body.name(), body.surname(), body.eMail(), body.birthdayYear(), "https://ui-avatars.com/api/?name="+ body.name() + "+" + body.surname()) {
+       };
+       return authorsDAO.save(newAuthor);
     }
+
 
 
     public Author findAuthorById(int id){
@@ -57,6 +67,10 @@ public class AuthorService {
         }
     }
 
+    public String uploadImage(MultipartFile image) throws IOException {
+        String url = (String) cloudinaryUploader.uploader().upload(image.getBytes(), ObjectUtils.emptyMap()).get("url");
+        return url;
+    }
 
 }
 
